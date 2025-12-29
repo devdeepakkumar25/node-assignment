@@ -93,7 +93,7 @@ async function getResult(url, limit) {
     console.log(jsonData);
     console.table(topWords);
   } catch (error) {
-    console.log("Error: ", error);
+    console.error("Error: ", error);
   }
 }
 
