@@ -10,8 +10,9 @@ c. email : email
 
 */
 
-const { count } = require("console");
+
 const http = require("http");
+
 const URL = "https://randomuser.me/api/";
 const PORT = process.env.PORT || 3000;
 const HOST = "127.0.0.1";

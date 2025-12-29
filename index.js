@@ -44,7 +44,8 @@ async function countWordOccurrences(reader) {
   const wordMap = new Map();
   try {
     for await (const line of reader) {
-      const words = line.toLowerCase().match(/[a-z']+/g);
+      // const words = line.toLowerCase().match(/[a-z']+/g);
+      const words = line.toLowerCase().match(/\b\w+\b/g);
       if (!words || words.length === 0) continue;
       for (const word of words) {
         wordMap.set(word, (wordMap.get(word) ?? 0) + 1);
@@ -96,7 +97,67 @@ async function getResult(url, limit) {
   }
 }
 
-
-
 const URL = "https://norvig.com/big.txt";
 getResult(URL);
+
+// Result
+
+/*
+[
+  {
+    "word": "the",
+    "count": 79809
+  },
+  {
+    "word": "of",
+    "count": 40024
+  },
+  {
+    "word": "and",
+    "count": 38312
+  },
+  {
+    "word": "to",
+    "count": 28765
+  },
+  {
+    "word": "in",
+    "count": 22023
+  },
+  {
+    "word": "a",
+    "count": 21124
+  },
+  {
+    "word": "that",
+    "count": 12512
+  },
+  {
+    "word": "he",
+    "count": 12401
+  },
+  {
+    "word": "was",
+    "count": 11410
+  },
+  {
+    "word": "it",
+    "count": 10681
+  }
+]
+┌─────────┬────────┬───────┐
+│ (index) │ word   │ count │
+├─────────┼────────┼───────┤
+│ 0       │ 'the'  │ 79809 │
+│ 1       │ 'of'   │ 40024 │
+│ 2       │ 'and'  │ 38312 │
+│ 3       │ 'to'   │ 28765 │
+│ 4       │ 'in'   │ 22023 │
+│ 5       │ 'a'    │ 21124 │
+│ 6       │ 'that' │ 12512 │
+│ 7       │ 'he'   │ 12401 │
+│ 8       │ 'was'  │ 11410 │
+│ 9       │ 'it'   │ 10681 │
+└─────────┴────────┴───────┘
+
+*/
