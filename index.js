@@ -98,7 +98,7 @@ async function getResult(url, limit) {
 }
 
 const URL = "https://norvig.com/big.txt";
-getResult(URL);
+getResult(URL, 10);
 
 // Result
 
